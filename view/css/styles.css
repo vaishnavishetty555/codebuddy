@@ -1,4 +1,7 @@
-
+/*body{
+	background-image: url('../images/monitor.jpg');
+	
+}*/
 .email{
 	font-size: 30px;
 	text-align: center;
@@ -7,15 +10,40 @@
 
 .form{
 	text-align: center;
-	margin-top:19%;
-	margin-bottom:22%;	
+padding-top: 20px;;
+	margin-bottom:22%;
+	background-color: white;
+	margin-left: 30%;
+	margin-right: 30%;	
+	padding-top: 20px;
 }
 
 #scroll{
 	text-align: center;
 	font-size: 20px;
 }
+#submit:hover{
+	background-color: black;
+	border: 6px inset;
+	color: white;
 
+}
 #submit{
 	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#infobox{
+	padding:50px;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top:10px;
+	border: 1px solid balck;
+	text-align: center;
+	width: auto;
+	height: auto;
+	background-color:black;
+	color: white;
+	opacity: 80%;
+	font-size: 30px;
 }
