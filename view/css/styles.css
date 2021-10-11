@@ -1,7 +1,9 @@
-/*body{
-	background-image: url('../images/monitor.jpg');
+body{
+	background-image: url('../images/desktop.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 	
-}*/
+}
 .email{
 	font-size: 30px;
 	text-align: center;
@@ -30,7 +32,7 @@ padding-top: 20px;;
 }
 #submit{
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 }
 
 #infobox{
