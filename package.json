@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/vaishnavishetty555/codebuddy/issues"
   },
-  "homepage": "https://github.com/vaishnavishetty555/codebuddy#readme"
+  "homepage": "https://github.com/vaishnavishetty555/codebuddy#readme",
+  "dependencies": {
+    "mongoose": "^6.0.12"
+  }
 }
