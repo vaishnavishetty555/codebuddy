@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Buddy</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  </head>
+  <body>
+    <div id="section-2">
+      <p id="infobox">
+        Get all your coding queries resolved here. Exculsively for the students
+        of NMAMIT.
+      </p>
+    </div>
+    <div id="section-1">
+      <div class="form">
+        <form action="" method="get" id="myForm" name="myForm">
+          <div>
+            <label for="name" class="namelabel">Name:</label>
+            <input
+              type="text"
+              class="nameinput"
+              name="name"
+              placeholder="Enter Name"
+              required
+            /><br />
+          </div>
+          <div>
+            <label for="usn" class="usnlabel">USN:</label>
+            <input
+              type="text"
+              class="usninput"
+              name="usn"
+              placeholder="Enter USN"
+              required
+            /><br />
+          </div>
+          <div>
+            <label for="email" class="emaillabel">Email:</label>
+            <input
+              type="Email"
+              class="emailinput"
+              name="email"
+              placeholder="Enter Email id"
+              required
+            /><br />
+          </div>
+          <div>
+            <label for="password" class="passwordlabel">Password:</label>
+            <input
+              type="password"
+              class="passwordinput"
+              name="password"
+              placeholder="Enter password"
+              required
+            /><br />
+          </div>
+          <div>
+            <label for="password" class="confirmpasswordlabel"
+              >Confirm<br />
+              Password:</label
+            >
+            <input
+              type="password"
+              class="confirmpasswordinput"
+              name="password"
+              placeholder="Enter Confirm password"
+              required
+            /><br />
+          </div>
+          <div class="Sub-link">
+            <button class="submit-form" id="submit" type="submit">
+              Submit
+            </button>
+            <button class="linktobutton">
+              <a href="/" class="linkto">Login</a>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      const myForm = document.getElementById("myForm");
+      myForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        // console.log(formData, formData.get("usn"), myForm);
+
+        try{
+          const requestOptions={
+            Credentials:'include',
+            method:'POST',
+            headers : {'Content-type':'application/json'},
+            body: JSON.stringify({email:formData.get("email"),usn:formData.get("usn"),password:formData.get("password"),name:formData.get("name")})
+          }
+          const response =  fetch(`/register`,requestOptions);
+          console.log(response)
+        }
+        catch(e){
+          console.log(e)
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -29,4 +29,4 @@ const questionschemamethod =new Schema({
 
 })
 
-module.exports = model("profile",profileschema)
+module.exports = model("questions",questionschemamethod)

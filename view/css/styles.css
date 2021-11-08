@@ -5,29 +5,50 @@ body{
 	background-size: cover;
 	
 }
-.email{
-	font-size: 30px;
-	text-align: center;
-	border-radius: 10px;
+.emaillabel,.namelabel,.usnlabel,.passwordlabel,.confirmpasswordlabel{
+	float: left;
 }
-
+.emailinput,.nameinput,.usninput{
+	margin-left: 30px;
+}
+.emaillabel,.namelabel,.usnlabel,.submit-form,.passwordlabel,.confirmpasswordlabel,
+.emailinput,.nameinput,.usninput,.passwordinput,.confirmpasswordinput{
+	font-size: 20px;
+	/* text-align: center; */
+	border-radius: 10px;
+	margin-bottom: 20px;
+	padding-left: 10px;
+}
+.linkto{
+	text-decoration: none;
+    color: black;
+}
+.linktobutton{
+	height: 30px;
+	width: 90px;
+	border-radius: 10px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
 .form{
 	text-align: center;
-padding-top: 20px;;
+	padding-top: 20px;;
 	margin-bottom:22%;
 	background-color: white;
 	margin-left: 30%;
 	margin-right: 30%;	
 	padding-top: 20px;
 }
-
+.Sub-link{
+	display: flex;
+}
 #scroll{
 	text-align: center;
 	font-size: 20px;
 }
 #submit:hover{
 	background-color: black;
-	border: 6px inset;
+	/* border: 6px inset; */
 	color: white;
 
 }
