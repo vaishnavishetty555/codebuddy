@@ -1,57 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Code Buddy</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="section-2">
-      <p id="infobox">
-        Get all your coding queries resolved here. Exculsively for the students
-        of NMAMIT.
-      </p>
+        <p id="infobox">
+            Get all your coding queries resolved here. Exculsively for the students of NMAMIT.
+        </p>
     </div>
     <div id="section-1">
-      <div class="form">
-        <form action="" method="get">
-          <div>
-            <label for="usn" class="usnlabel">USN:</label>
-            <input
-              type="text"
-              class="usninput"
-              name="usn"
-              placeholder="Enter USN"
-              required
-            /><br />
-          </div>
-          <div>
-            <label for="email" class="emaillabel">Email:</label>
-            <input
-              type="Email"
-              class="emailinput"
-              name="email"
-              placeholder="Enter Email id"
-              required
-            /><br />
-          </div>
-          <div>
-            <label for="password" class="passwordlabel">Password:</label>
-            <input
-              type="password"
-              class="passwordinput"
-              name="password"
-              placeholder="Enter password"
-              required
-            /><br />
-          </div>
+        <div class="form">
+            <form action="" method="get" id="myForm" name="myForm">
+                <div>
+                    <label for="usn" class="usnlabel">USN:</label>
+                    <input type="text" class="usninput" name="usn" placeholder="Enter USN" required /><br />
+                </div>
+                <div>
+                    <label for="email" class="emaillabel">Email:</label>
+                    <input type="Email" class="emailinput" name="email" placeholder="Enter Email id" required /><br />
+                </div>
+                <div>
+                    <label for="password" class="passwordlabel">Password:</label>
+                    <input type="password" class="passwordinput" name="password" placeholder="Enter password" required /><br />
+                </div>
 
-          <div >
-            <input class="submit-form" id="submit" type="submit" />
-            <button class="linktobutton"><a href="./register" class="linkto">Signup</a></button>
-          </div>
-        </form>
-      </div>
+                <div>
+                    <input class="submit-form" id="submit" type="submit" />
+                    <button class="linktobutton"><a href="./register" class="linkto">Signup</a></button>
+                </div>
+            </form>
+            <div id="formmsg"></div>
+        </div>
     </div>
-    <script></script>
-  </body>
+    <script>
+        const myForm = document.getElementById("myForm");
+        myForm.addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            console.log(formData.get("password"));
+
+            try {
+                const requestOptions = {
+                    Credentials: 'include',
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: formData.get("email"),
+                        usn: formData.get("usn"),
+                        password: formData.get("password")
+                    })
+                }
+                const response = await fetch(`/login`, requestOptions);
+                console.log("responselogin", response)
+                if (response.status == 200) {
+                    document.getElementById("formmsg").innerHTML = "";
+                    console.log("responselogin", response)
+                        // location.assign('')
+                } else if (response.status == 404 || response.status == 400) {
+                    document.getElementById("formmsg").innerHTML = "Provide correct mailID or password or usn";
+
+                }
+
+
+            } catch (e) {
+                console.log(e)
+            }
+            // document.getElementById("formmsg").innerHTML="";
+
+
+
+
+        });
+    </script>
+</body>
+
 </html>
