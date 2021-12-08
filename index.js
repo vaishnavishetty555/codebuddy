@@ -16,7 +16,7 @@ app.use(express.json())
 
 // mongoDB connection
 
-mongoose.connect('mongodb+srv://Vineeth_11_:vini$1234567@cluster0-z6unz.mongodb.net/codebuddy?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+mongoose.connect('mongodb+srv://Vineeth_11_:Vini12345@cluster0-z6unz.mongodb.net/codebuddy?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if (!err) { console.log('MongoDB Connection Succeeded.') } else { console.log('Error in DB connection : ' + err) }
 });
 

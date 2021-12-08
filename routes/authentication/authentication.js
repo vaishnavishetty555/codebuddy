@@ -18,7 +18,7 @@ let registerValidator = [
     .exists()
     .withMessage("Please provide a password")
     .bail()
-    .isAlphanumeric()
+    // .isAlphanumeric()
     .isLength({ min: 6, max: 20 })
     .withMessage("Please provide a password between 6-20 characters in length")
 
