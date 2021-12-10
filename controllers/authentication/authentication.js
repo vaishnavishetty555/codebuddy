@@ -24,7 +24,7 @@ module.exports.create = async(req, res) => {
             res.status(404).json();
         }
 
-        // console.log(123, profileEmail);
+       
 
     } catch (e) {
         console.log(e);
@@ -33,7 +33,7 @@ module.exports.create = async(req, res) => {
 }
 
 module.exports.logto = async(req, res) => {
-    console.log("!!!", req.body);
+    
     try {
         const result = validationResult(req);
         if (!result.isEmpty()) {
@@ -41,16 +41,10 @@ module.exports.logto = async(req, res) => {
             return;
         }
         const { email, password, usn } = req.body;
-        console.log("email,usn,password", email, usn, password);
-
         const profileEmail = await Profile.findOne({ email: email });
 
         const comparing = await bcrypt.compare(password, profileEmail.password);
-        console.log(comparing)
-            // console.log("profileEmail",profileEmail,profileEmail.password,hash)
-
         if (profileEmail != null && comparing && usn == profileEmail.usn) {
-            console.log("!!!!!!!!", profileEmail.password, password)
             res.status(200).json();
         } else {
             res.status(404).json();
