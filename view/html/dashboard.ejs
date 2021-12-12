@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Welcome to Codebudyy</title>
+
 <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 </head>
 <body>
@@ -14,32 +15,29 @@
 		<div class="edit">VIEW PROFILE</div>
 	
 	  </a>
-	  <div class="logout" href=><a href="">LOGOUT</a></div>
+	  <button class="logout" href=><a href="">LOGOUT</a></button>
 	</div>
-<div class="maincontent">
-	<div class="dropdown">
+	<form >
+<div class="maincontent" ">
+	<div class="dropdown" style="margin-bottom: 10px;">
 		<button class="dropbtn">SORT</button>
 		<div class="dropdown-content">
 		<a href="#">Newer queries</a>
 		<a href="#">Older queries</a>
 		</div>
 	  </div>
-	  <div class="dropdown">
-		<button class="dropbtn">TAGS</button>
-		<div class="dropdown-content">
-		<a href="#">HTML</a>
-		<a href="#">Web Development</a>
-		<a href="#">Competitive Coding</a>
-		<a href="#">Python</a>
-		</div>
+	  <div style="margin-bottom: 10px;  ">
+		<label for="tag" style="text-align: left; font-weight: bold">TAG:</label><br>
+		<textarea class="form-control" rows="3" placeholder="Enter tag to search"></textarea>
 	  </div>
-	  <div class="query">
+	  
+		
+		<button type="submit" style="margin-bottom: 10px;">SUBMIT</button>
+	  </form>
+	  <div class="query" >
 		  <button class="newquery"><a href="#">ASK A QUESTION</a></button>
 	  </div>
-	  <form >
-		
-		<button type="submit">SUBMIT</button>
-	  </form>
+	 
 	</div>
 </body>
 </html>

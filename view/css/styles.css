@@ -133,14 +133,14 @@ a {
 	right: -18px;
 	bottom: -4px;
 	letter-spacing: 3px;
-	background-color: black;
+	
 	padding: 12px;
   margin: 15px;
   color: white;
   width:fit-content;
   }
 .maincontent{
-	padding-top: 18% ;
+	padding-top: 15% ;
 	padding-left: 15%;
 	
 	
@@ -185,16 +185,7 @@ a {
 	background-color: #252525;
   }
 
-  .query {
-	background-color: #000000;
-	color: white;
-	padding: 16px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
-	max-width: fit-content;
-	display: inline-block;
-  }
+  
   
   .newquery {
 	position: relative;
