@@ -25,27 +25,30 @@
 		<button class="logout" href=><a href="">LOGOUT</a></button>
 	</div> -->
 
-	<div class="maincontent" >
-	<div class=" dropdown" style="margin-bottom: 10px;  margin-right:10px">
-		<button class="dropbtn">SORT</button>
-		<div class="dropdown-content">
-			<a href="#">Newer queries</a>
-			<a href="#">Older queries</a>
+	<div class="maincontent">
+		<div class=" dropdown" style="margin-bottom: 10px;  margin-right:10px">
+			<button class="dropbtn">SORT</button>
+			<div class="dropdown-content">
+				<a href="#">Newer queries</a>
+				<a href="#">Older queries</a>
+			</div>
 		</div>
+		<div style="margin-bottom: 10px; margin-right:10px ">
+			<label for="tag" style="text-align: left; font-weight: bold">TAG:</label><br>
+			<input placeholder="Enter tag to search">
+		</div>
+
+
+		<button class="dropbtn"><a href="/newquery">ASK A QUESTION</a></button>
+
+
 	</div>
-	<div style="margin-bottom: 10px; margin-right:10px ">
-		<label for="tag" style="text-align: left; font-weight: bold">TAG:</label><br>
-		<input placeholder="Enter tag to search">
-	</div>
-
-
-	<button class="dropbtn"><a href="/newquery">ASK A QUESTION</a></button>
-
-
-	</div>
-	<div class="container-sm">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nobis sunt recusandae voluptas, enim culpa
-		omnis eius non! Labore molestias quae consectetur minima sed necessitatibus quia sint repellat ad totam.
+	<div>
+		<% for (var i=0;i<allquery.length;i++){%>
+			<br /><br/>
+			<%=allquery[i].tag %><br/>
+			<%=allquery[i].question%> 
+				<%}%>
 	</div>
 </body>
 
