@@ -141,7 +141,7 @@ a {
   }
 .maincontent{
 	padding-top: 15% ;
-	padding-left: 15%;
+	/* padding-left: 15%; */
 	display: flex;
 	
 	

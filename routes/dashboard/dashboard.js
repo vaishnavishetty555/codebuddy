@@ -16,6 +16,7 @@ router.get('/allquery', async (req, res) => {
 })
 
 router.post('/addquestions', async (req, res) => {
+    // console.log(111);
     await comments.adding(req, res);
 })
 

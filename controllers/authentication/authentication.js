@@ -12,7 +12,7 @@ module.exports.create = async(req, res) => {
             return;
         }
         const { email, usn, password, name } = req.body
-        console.log("email,usn,password,name", email, usn, password, name);
+        // console.log("email,usn,password,name", email, usn, password, name);
 
         const profileEmail = await Profile.findOne({ $or: [{ email: email }, { usn: usn }] });
         if (profileEmail == null) {
