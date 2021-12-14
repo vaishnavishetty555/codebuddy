@@ -25,6 +25,7 @@ module.exports.allquerydash = async (req, res) => {
 module.exports.singlequery = async (req, res) => {
     try {
         // console.log(req)
+        console.log(222, req.query.id);
         const result = await questions.findOne({ _id: req.query.id })
         // console.log(result)
         return result;
@@ -33,3 +34,24 @@ module.exports.singlequery = async (req, res) => {
         console.log(e)
     }
 }
+module.exports.addcomment = async (req, res) => {
+    try {
+        // console.log(req)
+        console.log(222, req.query.id);
+        const result = await questions.findOne({ _id: req.query.id })
+        if (!result) {
+            res.status(400).json();
+            return
+        }
+        console.log(result)
+        result.comment.push({ text: req.body.text, usn:'111'})
+        await result.save();
+        res.status(200).json();
+        return;
+
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+

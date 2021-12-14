@@ -47,21 +47,22 @@
 		<% for (var i=0;i<allquery.length;i++){%>
 			<br /><br />
 			<%=allquery[i].tag %><br />
-				<div onclick="callsinglequery('<%=allquery[i]%>')">
+				<div onclick="callsinglequery('<%=allquery[i]._id%>')">
 					<%=allquery[i].question%>
 				</div>
+				<%}%>
 	</div>
-	<%}%>
-		</div>
 
-		<script>
-			async function callsinglequery(i) {
-				// console.log("called", i)
-				localStorage.setItem("question", i);
-				location.assign('/allquery')
+	</div>
 
-			}
-		</script>
+	<script>
+		async function callsinglequery(i) {
+			// console.log("called", i)
+			localStorage.setItem("question", i);
+			location.assign(`/allquery?id=${i}`)
+
+		}
+	</script>
 </body>
 
 </html>

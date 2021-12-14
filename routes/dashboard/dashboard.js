@@ -24,4 +24,9 @@ router.post('/addquestions', async (req, res) => {
     await comments.adding(req, res);
 })
 
+router.post('/addcomments', async (req, res) => {
+    console.log(req.body,res)
+    await comments.addcomment(req, res)
+})
+
 module.exports = router;

@@ -13,26 +13,29 @@
 
 <body style="margin-top: 3%;">
   <div class="container ">
-    <div class="">
-      <div>
-        <!-- <% if (singlequery !=null){%>
-          <% for (var i=0;i<singlequery.length;i++){%>
-            <br /><br />
-            <%=singlequery[i].tag %><br />
 
-              <%=singlequery[i].question%>
-              <%}%>
-              <%}%> -->
-      </div>
-     
-       
-
+    <div>
+      <%=singlequery.tag %><br />
+        <%=singlequery.question%>
     </div>
-    <form>
+
+    <div>
+      All comments
+      <div>
+        <% for (var i=0;i<singlequery.comment.length;i++){%>
+
+          <%=singlequery.comment[i].text %><br />
+
+            <%}%>
+      </div>
+    </div>
+
+
+    <form id="myForm">
 
       <div class="form-group" style="margin-top: 10px;">
         <label for="comment">Add a comment:</label>
-        <textarea class="form-control" rows="3"></textarea>
+        <textarea class="form-control" rows="3" name="textarea"></textarea>
       </div>
       <button type="submit">SUBMIT</button>
     </form>
@@ -40,27 +43,33 @@
   </div>
   </div>
   <script>
-    // // async function allcomments() {
-    //   try {
-    //     const requestOptions = {
-    //       Credentials: 'include',
-    //       method: 'GET',
-    //       headers: { 'Content-type': 'application/json' },
-    //     }
-    //     const response = await fetch(`/allquery?id=${localStorage.getItem('question')}`, requestOptions);
-    //     console.log("response", response)
-    //     // const res = await response.json()
-    //     // if (response.status == 200) {
+    const myForm = document.getElementById("myForm")
+    myForm.addEventListener("submit", async function (e) {
+      e.preventDefault()
+      const formData = new FormData(this);
+      console.log(formData.get("textarea"))
+      try {
+        const requestOptions = {
+          Credentials: 'include',
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: formData.get("textarea")
+          })
+        }
+        const response = await fetch(`/addcomments?id=${localStorage.getItem("question")}`, requestOptions);
+        console.log("responseaddcomments", response)
 
-    //     // }
-
-    //   }
-    //   catch (e) {
-    //     console.log(e)
-    //   }
-    // }
-    // allcomments()
-
+        if (response.status == 200) {
+          location.reload()
+        }
+      }
+      catch (e) {
+        console.log(e)
+      }
+    })
   </script>
 </body>
 
