@@ -41,7 +41,7 @@
         myForm.addEventListener("submit", async function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            console.log(formData.get("password"));
+            // console.log(formData.get("password"));
 
             try {
                 const requestOptions = {
@@ -57,10 +57,10 @@
                     })
                 }
                 const response = await fetch(`/login`, requestOptions);
-                console.log("responselogin", response)
+                // console.log("responselogin", response)
                 if (response.status == 200) {
                     document.getElementById("formmsg").innerHTML = "";
-                    console.log("responselogin", response)
+                    // console.log("responselogin", response)
                     location.assign('/dashboard')
                 } else if (response.status == 404 || response.status == 400) {
                     document.getElementById("formmsg").innerHTML = "Provide correct mailID or password or usn";

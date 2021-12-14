@@ -6,7 +6,7 @@ module.exports.create = async(req, res) => {
     try {
 
         const result = validationResult(req);
-        console.log(result);
+        // console.log(result);
         if (!result.isEmpty()) {
             res.status(400).json(result.array()[0])
             return;

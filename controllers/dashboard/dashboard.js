@@ -2,7 +2,7 @@ const questions = require('../../model/questionSchema')
 
 module.exports.adding = async (req, res) => {
     try {
-        console.log(22)
+        // console.log(22)
         const { question, tag, usn } = req.body
         await questions.create({ question: question, tag: tag, usn: '111', comment: [] })
         res.status(200).json();
@@ -12,11 +12,21 @@ module.exports.adding = async (req, res) => {
     }
 }
 
-module.exports.allquery = async (req, res) => {
+module.exports.allquerydash = async (req, res) => {
     try {
+        const result = await questions.find({})
+        return result;
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
 
-
-       const result= await questions.find({})
+module.exports.singlequery = async (req, res) => {
+    try {
+        // console.log(req)
+        const result = await questions.findOne({ _id: req.query.id })
+        // console.log(result)
         return result;
     }
     catch (e) {

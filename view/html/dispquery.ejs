@@ -4,7 +4,7 @@
 <head>
   <title>Code Buddy</title>
   <meta charset="utf-8">
-  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -14,19 +14,54 @@
 <body style="margin-top: 3%;">
   <div class="container ">
     <div class="">
-      <div class="col-md-12">
-        <textarea class="form-control" rows="20"></textarea>
-      <form>
-        
-        <div class="form-group" style="margin-top: 10px;">
-          <label for="comment">Comment:</label>
-          <textarea class="form-control" rows="3"></textarea>
-        </div>
-        <button type="submit">SUBMIT</button>
-      </form>
+      <div>
+        <!-- <% if (singlequery !=null){%>
+          <% for (var i=0;i<singlequery.length;i++){%>
+            <br /><br />
+            <%=singlequery[i].tag %><br />
+
+              <%=singlequery[i].question%>
+              <%}%>
+              <%}%> -->
+      </div>
+     
+       
+
     </div>
-    </div>
+    <form>
+
+      <div class="form-group" style="margin-top: 10px;">
+        <label for="comment">Add a comment:</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+      <button type="submit">SUBMIT</button>
+    </form>
   </div>
+  </div>
+  </div>
+  <script>
+    // // async function allcomments() {
+    //   try {
+    //     const requestOptions = {
+    //       Credentials: 'include',
+    //       method: 'GET',
+    //       headers: { 'Content-type': 'application/json' },
+    //     }
+    //     const response = await fetch(`/allquery?id=${localStorage.getItem('question')}`, requestOptions);
+    //     console.log("response", response)
+    //     // const res = await response.json()
+    //     // if (response.status == 200) {
+
+    //     // }
+
+    //   }
+    //   catch (e) {
+    //     console.log(e)
+    //   }
+    // }
+    // allcomments()
+
+  </script>
 </body>
 
 </html>
