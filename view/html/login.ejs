@@ -16,13 +16,62 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
         type="text/css" />
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', event => {
+  
+      // Navbar shrink function
+      var navbarShrink = function () {
+          const navbarCollapsible = document.body.querySelector('#mainNav');
+          if (!navbarCollapsible) {
+              return;
+          }
+          if (window.scrollY === 0) {
+              navbarCollapsible.classList.remove('navbar-shrink')
+          } else {
+              navbarCollapsible.classList.add('navbar-shrink')
+          }
+  
+      };
+  
+      // Shrink the navbar 
+      navbarShrink();
+  
+      // Shrink the navbar when page is scrolled
+      document.addEventListener('scroll', navbarShrink);
+  
+      // Activate Bootstrap scrollspy on the main nav element
+      const mainNav = document.body.querySelector('#mainNav');
+      if (mainNav) {
+          new bootstrap.ScrollSpy(document.body, {
+              target: '#mainNav',
+              offset: 72,
+          });
+      };
+  
+      // Collapse responsive navbar when toggler is visible
+      const navbarToggler = document.body.querySelector('.navbar-toggler');
+      const responsiveNavItems = [].slice.call(
+          document.querySelectorAll('#navbarResponsive .nav-link')
+      );
+      responsiveNavItems.map(function (responsiveNavItem) {
+          responsiveNavItem.addEventListener('click', () => {
+              if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                  navbarToggler.click();
+              }
+          });
+      });
+  
+  });
+  
+    </script>
 </head>
 
 <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+            <a class="navbar-brand" href="#page-top" >CODE BUDDY</a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -73,16 +122,13 @@
             </div>
             <!-- About Section Content-->
             <div class="row">
-                <div class="col-lg-4 ms-auto">
-                    <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download
-                        includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS
-                        stylesheets for easy customization.</p>
+                <div class="text-center">
+                  <p class="lead">Code Buddy is like a Stack OverFlow website where students of NMAMIT can get their coding related queries resolved!
+                    <p class="lead">
+                      Search for an existing question using the tag and sort or drop a new question. Anyone can resolve your doubt or you can do it for anyone!</p>
+                  </p>
                 </div>
-                <div class="col-lg-4 me-auto">
-                    <p class="lead">You can create your own custom avatar for the masthead, change the icon in the
-                        dividers, and add your email address to the contact form to make it fully functional!</p>
-                </div>
-            </div>
+              </div>
             <!-- About Section Button-->
         </div>
     </section>
@@ -168,16 +214,16 @@
         <div class="container">
             <div class="row">
                 <!-- Footer Location-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Location</h4>
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Location:</h4>
                     <p class="lead mb-0">
-                        2215 John Daniel Drive
+                        NMAM Institute of Technology
                         <br />
-                        Clark, MO 65243
+                        Nitte,Karkala
                     </p>
                 </div>
                 <!-- Footer Social Icons-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
+<!--<div class="col-lg-4 mb-5 mb-lg-0">
                     <h4 class="text-uppercase mb-4">Around the Web</h4>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
                             class="fab fa-fw fa-facebook-f"></i></a>
@@ -185,14 +231,13 @@
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
                             class="fab fa-fw fa-linkedin-in"></i></a>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                </div>
+                </div>-->
                 <!-- Footer About Text-->
-                <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                <div class="col-lg-6">
+                    <h4 class="text-uppercase mb-4">Project By:</h4>
                     <p class="lead mb-0">
-                        Freelance is a free to use, MIT licensed Bootstrap theme created by
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                        .
+                        Vaishnavi P Shetty &<br>
+                        Vaishnavi Hegde
                     </p>
                 </div>
             </div>
@@ -200,7 +245,7 @@
     </footer>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright &copy; Your Website 2021</small></div>
+        <div class="container"><small>Copyright &copy; Code Buddy 2021</small></div>
     </div>
 
     <!-- Bootstrap core JS-->
