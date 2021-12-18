@@ -84,21 +84,6 @@
       </nav>
     </div>
 
-   <div>
-      <%=singlequery.tag %><br />
-        <%=singlequery.question%>
-    </div>
-
-    <div>
-      All comments
-      <div>
-        <% for (var i=0;i<singlequery.comment.length;i++){%>
-
-          <%=singlequery.comment[i].text %><br />
-
-            <%}%>
-      </div>
-    </div>
 
   <section class="page-section bg-transparent text-white" >
     <div class="container">
@@ -107,6 +92,22 @@
       </section>
   <section class="page-section bg-primary text-white" >
     <div class="container">
+      <div>
+        <%=singlequery.tag %><br />
+          <%=singlequery.question%>
+      </div>
+  
+      <div>
+        All comments
+        <div>
+          <% for (var i=0;i<singlequery.comment.length;i++){%>
+  
+            <%=singlequery.comment[i].text %><br />
+  
+              <%}%>
+        </div>
+      </div>
+  
     <form id="myForm">
 
       <div class="form-group" style="margin-top: 10px;">
