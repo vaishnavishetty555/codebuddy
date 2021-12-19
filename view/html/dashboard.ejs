@@ -71,7 +71,7 @@
 	<div>
 		<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
 			<div class="container">
-				<a class="navbar-brand" href="#page-top">CODE BUDDY</a>
+				<a class="navbar-brand" href="/dashboard">CODE BUDDY</a>
 				<button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
 					type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 					aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,7 +107,7 @@
 							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 								style=" padding: 10px 20px;font-size: 20px;border-radius: 10px;">
-								Dropdown button
+								Order
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style=" padding: 10px 20px;
 								font-size: 20px;
@@ -118,11 +118,16 @@
 						</div>
 						<label for="tag" style="font-size: 20px">TAG:</label><br>
 						<div class="col-sm-4 offset-sm-4">
-							<div class="input-group mb-3">
+							<div class="input-group ">
 								<input type="text" class="form-control" aria-label="Default"
 									aria-describedby="inputGroup-sizing-default" placeholder="Enter tag to search"
-									size="4">
+									size="4" onkeydown="search(this)">
+
 							</div>
+							<div>
+								<small>Give enter after typing...</small>
+							</div>
+
 						</div>
 					</div>
 
@@ -245,8 +250,13 @@
 	</div>-->
 
 	<script>
-
-		console.log("123", allquery)
+		function search(ele) {
+			if (event.key === 'Enter') {
+				// alert(ele.value);
+				location.assign(`/dashboard?id=${ele.value}`);
+			}
+		}
+		// console.log("123", allquery)
 		async function callsinglequery(i) {
 			// console.log("called", i)
 			localStorage.setItem("question", i);
