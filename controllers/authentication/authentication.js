@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const Profile = require("../../model/profileSchema");
 const bcrypt = require('bcryptjs');
+const jwt=require("jsonwebtoken");
 
 module.exports.create = async(req, res) => {
     try {
@@ -45,12 +46,49 @@ module.exports.logto = async(req, res) => {
 
         const comparing = await bcrypt.compare(password, profileEmail.password);
         if (profileEmail != null && comparing && usn == profileEmail.usn) {
+
+            const jwtsecret="codebuddy";
+            const token=await jwt.sign({
+               email:profileEmail.email,
+               usn:profileEmail.usn,
+               name:profileEmail.name,
+    
+            },jwtsecret);
+    
+            res.cookie("token",token,{
+                expires:new Date(Date.now()+24*60*60*1000),
+                httpOnly:true,
+                path:"/"
+            });
             res.status(200).json();
         } else {
             res.status(404).json();
         }
+       
 
 
+
+
+        
+
+
+    } catch (e) {
+        console.log(e);
+        res.status(500).json()
+        return
+
+    }
+}
+
+
+module.exports.logout = async(req, res) => {
+    
+    try {
+        console.log(222);
+       res.clearCookie("token",{
+           httpOnly:true,
+           path:"/"
+       }).sendStatus(200);
     } catch (e) {
         console.log(e);
         res.status(500).json()

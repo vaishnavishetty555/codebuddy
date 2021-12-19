@@ -46,4 +46,10 @@ router.post('/login', registerValidator, async(req, res) => {
 
 })
 
+router.get('/logout', async(req, res) => {
+    await authentication.logout(req, res);
+    // console.log("req", req.body)
+
+})
+
 module.exports = router;

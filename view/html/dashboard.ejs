@@ -19,51 +19,51 @@
 
 	<script type="text/javascript">
 		window.addEventListener('DOMContentLoaded', event => {
-  
-	  // Navbar shrink function
-	  var navbarShrink = function () {
-		  const navbarCollapsible = document.body.querySelector('#mainNav');
-		  if (!navbarCollapsible) {
-			  return;
-		  }
-		  if (window.scrollY === 0) {
-			  navbarCollapsible.classList.remove('navbar-shrink')
-		  } else {
-			  navbarCollapsible.classList.add('navbar-shrink')
-		  }
-  
-	  };
-  
-	  // Shrink the navbar 
-	  navbarShrink();
-  
-	  // Shrink the navbar when page is scrolled
-	  document.addEventListener('scroll', navbarShrink);
-  
-	  // Activate Bootstrap scrollspy on the main nav element
-	  const mainNav = document.body.querySelector('#mainNav');
-	  if (mainNav) {
-		  new bootstrap.ScrollSpy(document.body, {
-			  target: '#mainNav',
-			  offset: 72,
-		  });
-	  };
-  
-	  // Collapse responsive navbar when toggler is visible
-	  const navbarToggler = document.body.querySelector('.navbar-toggler');
-	  const responsiveNavItems = [].slice.call(
-		  document.querySelectorAll('#navbarResponsive .nav-link')
-	  );
-	  responsiveNavItems.map(function (responsiveNavItem) {
-		  responsiveNavItem.addEventListener('click', () => {
-			  if (window.getComputedStyle(navbarToggler).display !== 'none') {
-				  navbarToggler.click();
-			  }
-		  });
-	  });
-  
-  });
-  
+
+			// Navbar shrink function
+			var navbarShrink = function () {
+				const navbarCollapsible = document.body.querySelector('#mainNav');
+				if (!navbarCollapsible) {
+					return;
+				}
+				if (window.scrollY === 0) {
+					navbarCollapsible.classList.remove('navbar-shrink')
+				} else {
+					navbarCollapsible.classList.add('navbar-shrink')
+				}
+
+			};
+
+			// Shrink the navbar 
+			navbarShrink();
+
+			// Shrink the navbar when page is scrolled
+			document.addEventListener('scroll', navbarShrink);
+
+			// Activate Bootstrap scrollspy on the main nav element
+			const mainNav = document.body.querySelector('#mainNav');
+			if (mainNav) {
+				new bootstrap.ScrollSpy(document.body, {
+					target: '#mainNav',
+					offset: 72,
+				});
+			};
+
+			// Collapse responsive navbar when toggler is visible
+			const navbarToggler = document.body.querySelector('.navbar-toggler');
+			const responsiveNavItems = [].slice.call(
+				document.querySelectorAll('#navbarResponsive .nav-link')
+			);
+			responsiveNavItems.map(function (responsiveNavItem) {
+				responsiveNavItem.addEventListener('click', () => {
+					if (window.getComputedStyle(navbarToggler).display !== 'none') {
+						navbarToggler.click();
+					}
+				});
+			});
+
+		});
+
 	</script>
 </head>
 
@@ -80,13 +80,20 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ms-auto">
-					  <!--<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" >View
+						<!--<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" >View
 						  Profile</a>
 					  </li>-->
-					  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" >Logout</a>
-					  </li>
+						<div style="display: flex;align-items: center;">
+							<p style="color: white;margin-top: 10px;">USER NAME : </p>
+							<li class="nav-item mx-0 mx-lg-1" style="color: white;">
+								<%=profilename%>
+							</li>
+						</div>
+						<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+								onclick="logout()">Logout</a>
+						</li>
 					</ul>
-				  </div>
+				</div>
 			</div>
 		</nav>
 	</div>
@@ -105,8 +112,8 @@
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style=" padding: 10px 20px;
 								font-size: 20px;
 									border-radius: 10px;">
-								<a class="dropdown-item" href="#">Newer Query</a>
-								<a class="dropdown-item" href="#">Older Query</a>
+								<a class="dropdown-item" onclick="newQuery('n')">Newer Query</a>
+								<a class="dropdown-item" onclick="oldQuery()">Older Query</a>
 							</div>
 						</div>
 						<label for="tag" style="font-size: 20px">TAG:</label><br>
@@ -132,33 +139,35 @@
 			</div>
 		</div>
 	</header>
-		<section class="page-section bg-transparent mb-0" >
+	<section class="page-section bg-transparent mb-0">
 		<div class="container">
 			<% for (var i=0;i<allquery.length;i++){%>
 				<br /><br />
-				<%=allquery[i].tag %><br />
-					<div onclick="callsinglequery('<%=allquery[i]._id%>')">
-						<%=allquery[i].question%>
-					</div>
-					<%}%>
-	</div>
-</section>
-	
- <!-- Footer-->
- <footer class="footer text-center">
-	<div class="container">
-		<div class="row">
-			<!-- Footer Location-->
-			<div class="col-lg-6 mb-5 mb-lg-0">
-				<h4 class="text-uppercase mb-4">Location:</h4>
-				<p class="lead mb-0">
-					NMAM Institute of Technology
-					<br />
-					Nitte,Karkala
-				</p>
-			</div>
-			<!-- Footer Social Icons-->
-<!--<div class="col-lg-4 mb-5 mb-lg-0">
+				Query raised by: <%=allquery[i].name %><br />
+					Query raised at: <%=allquery[i].createdAt %><br />
+						<%=allquery[i].tag %><br />
+							<div onclick="callsinglequery('<%=allquery[i]._id%>')">
+								<%=allquery[i].question%>
+							</div>
+							<%}%>
+		</div>
+	</section>
+
+	<!-- Footer-->
+	<footer class="footer text-center">
+		<div class="container">
+			<div class="row">
+				<!-- Footer Location-->
+				<div class="col-lg-6 mb-5 mb-lg-0">
+					<h4 class="text-uppercase mb-4">Location:</h4>
+					<p class="lead mb-0">
+						NMAM Institute of Technology
+						<br />
+						Nitte,Karkala
+					</p>
+				</div>
+				<!-- Footer Social Icons-->
+				<!--<div class="col-lg-4 mb-5 mb-lg-0">
 				<h4 class="text-uppercase mb-4">Around the Web</h4>
 				<a class="btn btn-outline-light btn-social mx-1" href="#!"><i
 						class="fab fa-fw fa-facebook-f"></i></a>
@@ -167,21 +176,21 @@
 						class="fab fa-fw fa-linkedin-in"></i></a>
 				<a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
 			</div>-->
-			<!-- Footer About Text-->
-			<div class="col-lg-6">
-				<h4 class="text-uppercase mb-4">Project By:</h4>
-				<p class="lead mb-0">
-					Vaishnavi P Shetty &<br>
-					Vaishnavi Hegde
-				</p>
+				<!-- Footer About Text-->
+				<div class="col-lg-6">
+					<h4 class="text-uppercase mb-4">Project By:</h4>
+					<p class="lead mb-0">
+						Vaishnavi P Shetty &<br>
+						Vaishnavi Hegde
+					</p>
+				</div>
 			</div>
 		</div>
+	</footer>
+	<!-- Copyright Section-->
+	<div class="copyright py-4 text-center text-white">
+		<div class="container"><small>Copyright &copy; Code Buddy 2021</small></div>
 	</div>
-</footer>
-<!-- Copyright Section-->
-<div class="copyright py-4 text-center text-white">
-	<div class="container"><small>Copyright &copy; Code Buddy 2021</small></div>
-</div>
 
 
 	<!-- Bootstrap core JS-->
@@ -236,6 +245,8 @@
 	</div>-->
 
 	<script>
+
+		console.log("123", allquery)
 		async function callsinglequery(i) {
 			// console.log("called", i)
 			localStorage.setItem("question", i);
@@ -243,6 +254,32 @@
 
 		}
 
+		async function newQuery(i) {
+			location.assign(`/dashboard?id=${i}`);
+			// console.log("new query",i)
+
+		}
+		async function oldQuery(i) {
+			location.assign(`/dashboard`);
+			// console.log("new query",i)
+
+		}
+
+		async function logout() {
+			try {
+				await fetch("/logout", {
+					credentials: "include",
+					"method": "GET",
+					"headers": { "Content-type": "application/json" }
+				}).then(resp => {
+					if (resp.status == "200") {
+						location.assign("/")
+					}
+				})
+			} catch (e) {
+				console.log(e)
+			}
+		}
 
 	</script>
 </body>

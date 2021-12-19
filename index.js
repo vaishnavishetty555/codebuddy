@@ -3,6 +3,8 @@ const expressLayouts = require('express-ejs-layouts')
 const path = require("path");
 const mongoose = require('mongoose');
 
+const cookieParser=require("cookie-parser")
+
 const app = express();
 
 //EJS
@@ -13,6 +15,7 @@ app.set('view engine', 'ejs');
 //Bodyparser
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(cookieParser())
 
 // mongoDB connection
 

@@ -9,6 +9,8 @@ const commentscehmamethod = new Schema({
         type:String,
     }
 
+},{
+    timestamps:true
 })
 
 const questionschemamethod =new Schema({
@@ -27,6 +29,8 @@ const questionschemamethod =new Schema({
         type: [commentscehmamethod]
     }
 
+},{
+    timestamps:true
 })
 
 module.exports = model("questions",questionschemamethod)
