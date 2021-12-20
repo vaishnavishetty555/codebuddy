@@ -101,7 +101,7 @@
 		<div class="container d-flex align-items-center flex-column">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-7" style="border-right: 2px dashed black;">
+					<div class="col-sm-6" style="border-right: 2px dashed black;">
 						<h3>Search a existing query</h3>
 						<div class="dropdown" style="padding-top: 3%">
 							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -131,7 +131,7 @@
 						</div>
 					</div>
 
-					<div class="col-sm-5">
+					<div class="col-sm-6">
 						<h3 style=" padding-bottom: 3%">Ask a new question</h3>
 						<button type="button" class="btn btn-dark" style=" padding: 10px 20px;
 							font-size: 20px;border-radius: 10px;">
@@ -148,12 +148,25 @@
 		<div class="container">
 			<% for (var i=0;i<allquery.length;i++){%>
 				<br /><br />
-				Query raised by: <%=allquery[i].name %><br />
-					Query raised at: <%=allquery[i].createdAt %><br />
-						<%=allquery[i].tag %><br />
-							<div onclick="callsinglequery('<%=allquery[i]._id%>')">
-								<%=allquery[i].question%>
-							</div>
+				<div class="card" >
+					<div class="card-body" style="display:flex;flex-direction: row;">
+						<span style="width:50%">
+						<h5 class="card-title" style="font-size: 24px;">
+								Query:<%=allquery[i].question%>
+						</h5>
+						<h6 class="card-subtitle mb-2 text-muted" style="font-size: 18px;margin-top: 10px;">Tag name: <span style="color:#1abc9c;"><%=allquery[i].tag %></span><br /></h6>
+						<p class="card-subtitle mb-2 text-muted" style="font-size: 14px;margin-top: 10px;">Query raised by: <span style="color:#1abc9c;"><%=allquery[i].name %></span> <br /></p>
+						<p class="card-subtitle mb-2 text-muted" style="font-size: 14px;margin-top: 10px;">Query raised at: <span style="color:#1abc9c;"><%=allquery[i].createdAt %></span><br /><br /></p>
+					</span>
+					<span style="width:50%;float:right;margin-top: 50px;">
+						<a onclick="callsinglequery('<%=allquery[i]._id%>')" class="card-link" style="cursor: pointer;text-decoration: none;font-size: 18px;margin-top: 50px;">All Comments -></a>
+					</span>
+					</div>
+				</div>
+				
+					
+						
+
 							<%}%>
 		</div>
 	</section>

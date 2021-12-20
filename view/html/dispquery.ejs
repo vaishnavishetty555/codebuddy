@@ -64,8 +64,9 @@
   <div>
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="/dashboard"><span class="glyphicon" style="color: white;cursor: pointer;">&#xe079;</span></a>
-        <a class="navbar-brand" href="#page-top">CODE BUDDY</a>
+        <a class="navbar-brand" href="/dashboard"><span class="glyphicon"
+            style="color: white;cursor: pointer;">&#xe079;</span></a>
+        <a class="navbar-brand" href="#">CODE BUDDY</a>
         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -83,39 +84,58 @@
                 <%=profilename%>
               </li>
             </div>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded">Logout</a>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" onclick="logout()">Logout</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
-  <header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-      <section class="page-section bg-primary text-white">
-        <div class="container">
-          <div>
-            <%=singlequery[0].tag %><br />
-              <%=singlequery[0].question%>
+
+
+
+  <section class="page-section bg-transparent text-black">
+    <div class="container" style="margin-top: 60px;">
+      <div>
+        
+        <span style="font-size: 28px;">
+          Query:  <%=singlequery[0].question%>
+        </span><br />
+        <span style="font-size: 24px;">
+         Tag: <%=singlequery[0].tag %>
+        </span>
+      </div>
+      <% for (var i=1;i<singlequery.length;i++){%>
+        <br /><br />
+        <div class="card">
+          <div class="card-body" style="display:flex;flex-direction: row;">
+            <span style="width:50%">
+              <h5 class="card-title" style="font-size: 24px;">
+                Comment <%=i%>: <%= singlequery[i].text %>
+              </h5>
+
+              <p class="card-subtitle mb-2 text-muted" style="font-size: 14px;margin-top: 10px;">Comment Given By: <span
+                  style="color:#1abc9c;">
+                  <%=singlequery[i].name %>
+                </span> <br /></p>
+              <p class="card-subtitle mb-2 text-muted" style="font-size: 14px;margin-top: 10px;">Comment Given At: <span
+                  style="color:#1abc9c;">
+                  <%=singlequery[i].createdAt %>
+                </span><br /><br /></p>
+            </span>
+
           </div>
         </div>
-      </section>
-    </div>
-  </header>
-  <section class="page-section bg-transparent text-black">
-    <div class="container">
-      <div>
-        <h3>All comments</h3>
-        <div>
-          <% for (var i=1;i<singlequery.length;i++){%>
 
-            <%=singlequery[i].text %><br />
-              <%=singlequery[i].name %><br />
-                <%=singlequery[i].createdAt %><br />
-                  <%}%>
-        </div>
-      </div>
+
+
+
+        <%}%>
     </div>
+
+
+
+
   </section>
   <section class="page-section bg-primary text-white">
     <div class="container">
@@ -210,6 +230,21 @@
         console.log(e)
       }
     })
+    async function logout() {
+			try {
+				await fetch("/logout", {
+					credentials: "include",
+					"method": "GET",
+					"headers": { "Content-type": "application/json" }
+				}).then(resp => {
+					if (resp.status == "200") {
+						location.assign("/")
+					}
+				})
+			} catch (e) {
+				console.log(e)
+			}
+		}
   </script>
 </body>
 

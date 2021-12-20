@@ -65,7 +65,7 @@
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="/dashboard"><span class="glyphicon" style="color: white;cursor: pointer;">&#xe079;</span></a>
-        <a class="navbar-brand" href="#page-top">CODE BUDDY</a>
+        <a class="navbar-brand" href="#">CODE BUDDY</a>
         <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
           data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@
                 <%=profilename%>
               </li>
             </div>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded">Logout</a>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" onclick="logout()">Logout</a>
             </li>
           </ul>
         </div>
@@ -220,6 +220,21 @@
         console.log(e)
       }
     })
+    async function logout() {
+			try {
+				await fetch("/logout", {
+					credentials: "include",
+					"method": "GET",
+					"headers": { "Content-type": "application/json" }
+				}).then(resp => {
+					if (resp.status == "200") {
+						location.assign("/")
+					}
+				})
+			} catch (e) {
+				console.log(e)
+			}
+		}
   </script>
 </body>
 
